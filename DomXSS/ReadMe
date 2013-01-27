@@ -1,0 +1,23 @@
+This is just a simple POC for demonstrating DOM XSS. The point I'm trying to make here, is that it's not only URL parameters that are vulnerable to DOM XSS. Basically any user controlled parameters (listed below) that are then read by client side JS could be potential candidates. I've just written a few very simple PHP scripts demonstrating this. It's useful to just browse through if you're reading any papers or learning more about DOM XSS to clear your concepts :) .. like me ;). The simple list of user controlled parameters are:
+
+-- Query string parameters (GET)
+-- Body parameters (POST). Includes hidden fields.
+-- HTTP request headers
+-- Possibly REST style URLs as well. Haven't written POCs for that though; will do sometime.
+
+The files are mapped as follows:
+query_string - Input taken from query string and read on server and/or client
+nosendserver - Input taken from URL from parameter following the '#' tag
+body - Input taken from POST body parameter and read on server and/or client
+header - Input taken from Cookie header and read on server and/or client
+
+The only HTML file needed is input.html. Please change the action attribute to check the behavior of all of the different files.
+
+For the nosendserver files, you'll have to do the following:
+a) Change action attribute to point to nosendserver_insecure.php or nosendserver_secure.php
+b) Submit form as normal from input.html
+c) Change '?' to '#' in URL and submit again
+
+All the rest is very similar. Just change the 'action' URL in input.html and submit the form. It's all very simple as you can see from the code but I felt it's quite cool for a beginner to know.
+
+I'll add stuff to this as and when I work on something related. Please feel free to add and improve.
